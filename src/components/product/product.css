@@ -1,0 +1,20 @@
+.pruduct{
+    display: flex;
+    gap:20px;
+    border-bottom:2px solid #ddd;
+    margin: 30px 0;
+    padding-bottom: 20px;
+}
+.pruduct .product-dettels h3{
+    color: rgb(84, 84, 243);
+}
+.pruduct .product-dettels h4{
+    font-size: 20px;
+}
+.pruduct .product-dettels button{
+    background: goldenrod;
+    border: 1px solid greenyellow;
+    padding: 10px 40px;
+    font-size: 18px;
+    border-radius: 8px;  
+}
