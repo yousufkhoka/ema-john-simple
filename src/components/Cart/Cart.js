@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
     const cart = props.cart
@@ -20,9 +21,6 @@ const Cart = (props) => {
         const precision = num.toFixed(2)
         return Number(precision)
     }
-
-    
-    
     const totalPrice = total + shipingCost + tex
     return (
         <div>
@@ -32,6 +30,9 @@ const Cart = (props) => {
             <p>shiping cost: {shipingCost} </p>
             <p>tex / vat : {formetNumber(tex)} </p>
             <h2>total price :{formetNumber(totalPrice)}</h2>
+            <Link to="/review">
+            <button className='main-button'>Review Order</button>
+            </Link>
         </div>
     );
 };

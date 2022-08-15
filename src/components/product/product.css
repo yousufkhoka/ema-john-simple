@@ -11,7 +11,7 @@
 .pruduct .product-dettels h4{
     font-size: 20px;
 }
-.pruduct .product-dettels button{
+.main-button{
     background: goldenrod;
     border: 1px solid greenyellow;
     padding: 10px 40px;
