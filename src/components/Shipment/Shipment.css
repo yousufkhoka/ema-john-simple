@@ -1,0 +1,12 @@
+.shipment-form{
+ margin:10px 200px;
+ width: 350px;
+}
+.shipment-form input{
+    display: block;
+    margin:10px 0;
+    
+}
+.error{
+    color:red
+}

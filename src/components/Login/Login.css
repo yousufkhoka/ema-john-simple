@@ -1,0 +1,40 @@
+.loginPart{
+    height: 100vh;
+    background: #3498db;
+   text-align: center;
+   padding: 50px 0;
+}
+.login-cart{
+  width: 500px;
+  padding: 40px;
+  margin: 0 auto;
+  background: #ffff;
+  border-radius: 20px;
+  box-shadow: 1px 2px 1px 1px #ddd;
+ 
+
+}
+
+.loginPart form{
+    padding: 20px ;
+}
+.loginPart h4{
+    color:#222;
+    font-size: 14px;
+    padding-top: 20px;
+}
+.submitButton{
+   background: none;
+   border:none;
+   color: #ffff;
+   font-size: 15px;
+   text-transform: uppercase;
+   width: 100px;
+   margin: 0 auto;
+}
+.CreateOrSign{
+    color:#3498db;
+    cursor: pointer;
+    border: none;
+    background: none;
+}

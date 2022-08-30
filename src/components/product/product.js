@@ -8,18 +8,19 @@ import { Link } from 'react-router-dom';
 
 
 const product = (props) => {
-  console.log(props.cart)
-    const {img , name,seller,price,stock ,key } = props.product
+    const {img , name,seller,price,stock ,key,category } = props.product
     return (
         <div className='pruduct'> 
            <div className="product-img">
             <img src={img} alt="" />
-           </div>
+          </div>
            <div className="product-dettels">
              <h3><Link to={"/product/"+key}>{name}</Link></h3>
              <h5>by: {seller}</h5>
              <h4>${price}</h4>
+             <h5>category {category}</h5>
              <p>only {stock} left in stock- order soon! </p>
+             
              { props.showAddToCart && <button
              className='main-button'
                onClick={ () => props.hendleAddProduct(props.product)}>

@@ -3,27 +3,56 @@ import { useEffect } from 'react';
 import './Shop.css';
 import Product from '../product/product';
 import Cart from '../Cart/Cart';
-import { addToDatabaseCart } from '../../utilities/fakedb';
+import { addToDatabaseCart, getDatabaseCart } from '../../utilities/fakedb';
 import {fakeData} from '../../fakeData/fakeData';
+import { Link } from 'react-router-dom';
 
 
 const Shop = () => {  
     const [product , setProducts] = useState([])
     const [cart , setCart] = useState([])
    useEffect(()=>{
-    setProducts(fakeData.products.slice(0,10))
+    setProducts(fakeData.products.slice(50,60))
    },[])
-   const hendleAddProduct = (product) => {
-    console.log('hello world', product)
-    const newCart = [...cart ,product]
-    setCart(newCart)
-    const sameProducts = newCart.filter(pd => pd.key === product.key)
-    const count = sameProducts.length;
-    addToDatabaseCart(product.key , count)
-   }
 
+console.log(product)
+   useEffect(()=>{
+    const savedCart = getDatabaseCart()
+    // console.log(savedCart)
+    const productKeys = Object.keys(savedCart) 
+    // console.log(productKeys)
+    const previousCart = productKeys.map(existionKey => {
+console.log(savedCart[existionKey])
+        const products = fakeData.products.find(pd => pd.key ===  existionKey )
+        products.quantity = savedCart[existionKey]  
+        return products;
+    })
+   setCart(previousCart)
+    // console.log(previousCart)
+   },[])
+
+
+   const hendleAddProduct = (product) => { 
+    const toBeAddedKey = product.key
+    const sameProducts = cart.find(pd => pd.key === toBeAddedKey)
+    let count = 1;
+    let newCart;
+    if(sameProducts){
+        count = sameProducts.quantity + 1      
+        sameProducts.quantity = count
+        const others = cart.filter( pd =>pd.key === toBeAddedKey )
+        newCart = [...others, sameProducts]
+    }
+    else{
+        product.quantity =  1;
+        newCart = [...cart, product]
+    }
+    setCart(newCart)
+    addToDatabaseCart(toBeAddedKey , product.quantity)
+   }
+                                     
     return (
-         <div className='shop-container'>
+         <div className='tiwn-container'>
            <div className="product-container">
           
             {
@@ -34,10 +63,15 @@ const Shop = () => {
                    hendleAddProduct={hendleAddProduct} 
                 ></Product>)
             }
-         
            </div>
            <div className="cart-container">
-            <Cart cart={cart}></Cart>
+            <Cart cart={cart}>
+            
+            <Link to="/review">
+            <button className='main-button'>process Order</button>
+            </Link>
+            
+            </Cart>
             </div>            
         </div>
     );
